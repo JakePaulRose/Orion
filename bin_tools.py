@@ -19,6 +19,7 @@ def segment_times(timeseries, max_gap):
         if i + 1 < len(timeseries):
             is_contiguous = (timeseries[i + 1] - t) < max_gap
     return time_segments
+
 def match_dimensions(ndarray, onedarray):
     """
     Return an N-D array of shape ndarray.shape with the values of onedarray
@@ -31,6 +32,7 @@ def match_dimensions(ndarray, onedarray):
         idx += num
         ndreturn.append(subreturn)
     return ndreturn
+
 def regularize(timeseries, dt, bin_about=None):
     """
     :param timeseries: defines max range of output
@@ -47,6 +49,7 @@ def regularize(timeseries, dt, bin_about=None):
         )
     else:
         return np.r_[timeseries.min() : timeseries.max() : dt]
+
 def medsig(
     a: np.ndarray, include_zeros: bool = True, axis: int = None
 ):
@@ -60,6 +63,7 @@ def medsig(
     med = np.nanmedian(a, axis=axis)
     sig = median_absolute_deviation(a, axis=axis, nan_policy="omit")
     return med, sig
+
 def rebin_err(t, f, dt=0.02, get_err_on_mean=False, bin_about=None):
     """
     Rebin a time-series with errors on the data (y-points).
@@ -80,6 +84,7 @@ def rebin_err(t, f, dt=0.02, get_err_on_mean=False, bin_about=None):
                 freg_err[i] /= np.sqrt(float(len(f[l])))
     l = np.isfinite(freg)
     return treg[l], freg[l], freg_err[l]
+
 def rebin_err_chunks(t, f, dt, max_gap=0.02, get_err_on_mean=False, bin_about=0):
     """
     Re-bin a time series with errors on the data, but by chunking up into slices to avoid empty data.
