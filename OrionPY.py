@@ -30,7 +30,7 @@ class OrionPy:
         self.mag_mean = self.hdu['catalogue'].data['NGTS_imag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
         
-        return self.flux_mean, self.mag_mean, self.mag_rmsgit 
+        return self.flux_mean, self.mag_mean, self.mag_rms 
 
     
 
