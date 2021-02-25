@@ -27,12 +27,11 @@ class OrionPy:
         """Loads the mean flux, for every object in catalogue"""
         self.flux_mean = self.hdu['catalogue'].data['flux_mean']
         self.flux_rms = self.hdu['catalogue'].data['flux_wrms']
-        self.mag_mean = self.hdu['catalogue'].data['mag_wmean']
+        self.mag_mean = self.hdu['catalogue'].data['NGTS_imag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
         
         return self.flux_mean, self.mag_mean, self.mag_rmsgit 
-    
-    hello
+
     
 
 
