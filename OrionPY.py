@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from astropy.io import fits
 
-class OrionPy:
+class OrionTools:
     def __init__(self, filename=None):
         if filename:
             self.hdu = self.load_file(filename)
