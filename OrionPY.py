@@ -25,7 +25,7 @@ class OrionTools:
         self.time = self.time / (24*60*60)
         self.flux = self.hdu['sysrem_flux3'].data[obj_index]
         self.flux[self.flux == 0] = np.nan
-        self.mag = -2.5*np.logt10(self.flux)
+        self.mag = -2.5*np.log10(self.flux)
     
     def load_means(self):
         """Loads the mean flux, for every object in catalogue"""
