@@ -3,11 +3,13 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 
 class OrionTools:
-    def __init__(self, filename=None):
+    def __init__(self, obj_index filename=None):
         if filename:
             self.hdu = self.load_file(filename)
         else:
             self.hdu = self.load_file('/data/jpr64/NG0535-0523_802_2017,2017S_CYCLE1807.fits')
+            self.load_flux(obj_index)
+            self.load_means()
      
     @staticmethod    
     def load_file(filename):
@@ -21,16 +23,14 @@ class OrionTools:
         self.flux = self.hdu['sysrem_flux3'].data[obj_index]
         self.flux[self.flux == 0] = np.nan
     
-        return self.time, self.flux
-    
     def load_means(self):
         """Loads the mean flux, for every object in catalogue"""
         self.flux_mean = self.hdu['catalogue'].data['flux_mean']
         self.flux_rms = self.hdu['catalogue'].data['flux_wrms']
         self.mag_mean = self.hdu['catalogue'].data['NGTS_imag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
-        
-        return self.flux_mean, self.mag_mean, self.mag_rms 
+
+
 
     
 
