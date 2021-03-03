@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy.io import fits
+import bin_tools
 
 class OrionTools:
     def __init__(self, obj_index=None, filename=None):
@@ -24,6 +25,7 @@ class OrionTools:
         self.time = self.time / (24*60*60)
         self.flux = self.hdu['sysrem_flux3'].data[obj_index]
         self.flux[self.flux == 0] = np.nan
+        self.mag = -2.5*np.logt10(self.flux)
     
     def load_means(self):
         """Loads the mean flux, for every object in catalogue"""
@@ -33,6 +35,17 @@ class OrionTools:
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
         self.gaia_gmag = self.hdu['catalogue'].data['gaia_gmag']
         self.gaia_gmag_err = self.hdu['catalogue'].data['gaia_gmag_err']
+
+    def rebin(self):
+        """Returns rebinned time and flux set to 6 min bins."""
+        self.time_rebin, self.mag_rebin, junk = bin_tools.rebin_err_chunks(self.time, self.mag, dt=(1/240), max_gap=0.5)
+        
+
+    def rebinned_vals(self):
+        self.calc_mag_mean = np.nanmean(self.mag_rebin)
+        self.calc_mag_rms = np.sqrt((self.mag_rebin**2)/np.size(self.mag_rebin))
+
+
 
 
 
