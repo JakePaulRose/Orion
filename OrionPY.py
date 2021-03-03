@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 
 class OrionTools:
-    def __init__(self, obj_index filename=None):
+    def __init__(self, obj_index, filename=None):
         if filename:
             self.hdu = self.load_file(filename)
         else:
