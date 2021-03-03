@@ -27,8 +27,10 @@ class OrionTools:
         """Loads the mean flux, for every object in catalogue"""
         self.flux_mean = self.hdu['catalogue'].data['flux_mean']
         self.flux_rms = self.hdu['catalogue'].data['flux_wrms']
-        self.mag_mean = self.hdu['catalogue'].data['NGTS_imag']
+        self.mag_mean = self.hdu['catalogue'].data['NGTS_gmag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
+        self.gaia_gmag = self.hdu['catalogue'].data['gaia_gmag']
+        self.gaia_gmag_err = self.hdu['catalogue'].data['gaia_gmag_err']
 
 
 
