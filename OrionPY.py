@@ -48,4 +48,4 @@ class OrionTools:
         """Calculates the new rebinned mean and rms"""
 
         self.calc_mag_mean = np.nanmean(self.mag_rebin)
-        self.calc_mag_rms = np.sqrt((np.square(self.mag_rebin)/np.size(self.mag_rebin)))
+        self.calc_mag_rms = np.sqrt((np.nanmean(np.square(self.mag_rebin))/np.size(self.mag_rebin)))
