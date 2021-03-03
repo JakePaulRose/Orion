@@ -3,13 +3,15 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 
 class OrionTools:
-    def __init__(self, obj_index, filename=None):
+    def __init__(self, obj_index=None, filename=None):
         if filename:
             self.hdu = self.load_file(filename)
         else:
             self.hdu = self.load_file('/data/jpr64/NG0535-0523_802_2017,2017S_CYCLE1807.fits')
-            self.load_flux(obj_index)
-            self.load_means()
+            if obj_index:
+                self.load_flux(obj_index)
+            else:
+                self.load_means()
      
     @staticmethod    
     def load_file(filename):
