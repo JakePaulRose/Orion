@@ -55,6 +55,8 @@ class Tools:
     
     def __init__(self):
         self.hdu=self.load_file('/data/jpr64/NG0535-0523_802_2017,2017S_CYCLE1807.fits')
+        self.load_data_series()
+        self.load_means()
 
     @staticmethod
     def load_file(filename):
