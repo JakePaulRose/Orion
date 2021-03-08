@@ -13,7 +13,7 @@ rebinned_data = []
 
 for i in flux_time_stack:
      rebinned_flux, rebinned_time, junk = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
-     rebinned_data.append((flux,time))
+     rebinned_data.append((rebinned_flux,rebinned_time))
 
      j += 1
      if j == 3: break
