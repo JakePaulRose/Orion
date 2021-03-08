@@ -54,7 +54,7 @@ class OrionTools:
 class Tools:
     
     def __init__(self):
-        self.hdu=self.load_file('/data/jpr64/NG0535-0523_802_2017,2017S_CYCLE1807.fits')
+        self.hdu = self.load_file('/data/jpr64/NG0535-0523_802_2017,2017S_CYCLE1807.fits')
         self.load_data_series()
         self.load_means()
 
@@ -74,7 +74,8 @@ class Tools:
         """Loads the mean flux, for every object in catalogue"""
         self.flux_mean = self.hdu['catalogue'].data['flux_mean']
         self.flux_rms = self.hdu['catalogue'].data['flux_wrms']
-        self.mag_mean = self.hdu['catalogue'].data['NGTS_gmag']
+        self.imag_mean = self.hdu['catalogue'].data['NGTS_imag']
+        self.gmag_mean = self.hdu['catalogue'].data['NGTS_gmag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
         self.gaia_gmag = self.hdu['catalogue'].data['gaia_gmag']
         self.gaia_gmag_err = self.hdu['catalogue'].data['gaia_gmag_err']
