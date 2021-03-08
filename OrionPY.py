@@ -76,6 +76,7 @@ class Tools:
         self.flux_rms = self.hdu['catalogue'].data['flux_rms']
         self.imag_mean = self.hdu['catalogue'].data['NGTS_imag']
         self.gmag_mean = self.hdu['catalogue'].data['NGTS_gmag']
+        self.mag_mean = self.hdu['catalogue'].data['mag_mean']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
         self.gaia_gmag = self.hdu['catalogue'].data['gaia_gmag']
         self.gaia_gmag_err = self.hdu['catalogue'].data['gaia_gmag_err']
