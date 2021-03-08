@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 import bin_tools
 from OrionPY import OrionTools, Tools
+import pandas as pd
 
 data = Tools()
 
@@ -17,3 +18,8 @@ for i in flux_time_stack:
      rebinned_data.append(list(zip(rebinned_time,rebinned_flux)))
      j += 1
      if j == 3: break
+
+
+"""Saving the file"""
+pd.DataFrame(rebinned_data).to_pickle("rebinned_data.pkl")
+
