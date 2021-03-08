@@ -73,7 +73,7 @@ class Tools:
     def load_means(self):
         """Loads the mean flux, for every object in catalogue"""
         self.flux_mean = self.hdu['catalogue'].data['flux_mean']
-        self.flux_rms = self.hdu['catalogue'].data['flux_wrms']
+        self.flux_rms = self.hdu['catalogue'].data['flux_rms']
         self.imag_mean = self.hdu['catalogue'].data['NGTS_imag']
         self.gmag_mean = self.hdu['catalogue'].data['NGTS_gmag']
         self.mag_rms = self.hdu['catalogue'].data['mag_rms']
