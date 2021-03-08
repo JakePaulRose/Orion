@@ -1,5 +1,6 @@
 import itertools
 import numpy as np
+import pnumpy
 from scipy.stats import median_absolute_deviation
 
 def segment_times(timeseries, max_gap):
