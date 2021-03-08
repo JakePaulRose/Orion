@@ -82,12 +82,13 @@ class Tools:
         self.gaia_gmag_err = self.hdu['catalogue'].data['gaia_gmag_err']
     
     def rebin(self):
-        """Returns rebinned time and flux set to 6 min bins."""
+        """Returns rebinned time and flux set to 6 min bins. Only works on individual lightcurves."""
 
         self.time_rebin, self.mag_rebin, junk = bin_tools.rebin_err_chunks(self.time, self.mag, dt=(1/240), max_gap=0.5)
         
     def rebinned_vals(self):
-        """Calculates the new rebinned mean and rms"""
+        """Calculates the new rebinned mean and rms. Only works on individual lightcurves."""
 
         self.calc_mag_mean = np.nanmean(self.mag_rebin)
         self.calc_mag_rms = np.sqrt((np.nanmean(np.square(self.mag_rebin))/np.size(self.mag_rebin)))     
+
