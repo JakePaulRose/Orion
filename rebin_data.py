@@ -8,12 +8,12 @@ data = Tools()
 
 flux_time_stack = np.stack((data.time, data.flux), axis = 2)
 
-Rebinned_flux_time = []
-rebinned_means = []
+rebinned_data = []
+
 
 for i in flux_time_stack:
      rebinned_flux, rebinned_time, junk = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
-     Rebinned_data.append((flux,time))
+     rebinned_data.append((flux,time))
 
      j += 1
      if j == 3: break
