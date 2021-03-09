@@ -4,7 +4,7 @@ from astropy.io import fits
 import bin_tools
 from OrionPY import OrionTools, Tools
 import pandas as pd
-from timeit imp
+from timeit import timeit
 
 data = Tools()
 
