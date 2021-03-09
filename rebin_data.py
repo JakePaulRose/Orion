@@ -19,10 +19,10 @@ for i in flux_time_stack:
      rebinned_data.append(np.stack((rebinned_time, rebinned_flux), axis = 1))
      
      j += 1
-     if j == 5: break
+     if j == 10: break
 end = timeit()
 
-print(end-start)
+print(start-end)
 x = np.asarray(rebinned_data, dtype = object)
 
 """Saving the file"""
