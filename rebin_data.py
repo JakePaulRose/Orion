@@ -26,5 +26,5 @@ print(start-end)
 x = np.asarray(rebinned_data, dtype = object)
 
 """Saving the file"""
-# pd.DataFrame(rebinned_data).to_pickle("rebinned_test.pkl")
 
+numpy.save('test.npy',x)
