@@ -27,4 +27,4 @@ x = np.asarray(rebinned_data, dtype = object)
 
 """Saving the file"""
 
-numpy.save('test.npy',x)
+np.save('test.npy',x)
