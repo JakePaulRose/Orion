@@ -15,13 +15,13 @@ j = 0
 
 for i in flux_time_stack:
      rebinned_flux, rebinned_time, junk = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
-     print(np.shape(rebinned_flux))
+     rebinned_data.append(np.array((rebinned_time, rebinned_flux, dtype=object))
      
      
      j += 1
      if j == 5: break
 
-
+np.asarray(rebinned_data, dtype = object)
 """Saving the file"""
 # pd.DataFrame(rebinned_data).to_pickle("rebinned_test.pkl")
 
