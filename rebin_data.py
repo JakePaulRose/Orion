@@ -12,20 +12,21 @@ flux_time_stack = np.stack((data.time, data.flux), axis = 2)
 
 rebinned_data = []
 
+
 # j = 0
 start = timeit()
 for i in flux_time_stack:
-     rebinned_flux, rebinned_time, junk = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
-     rebinned_data.append(np.stack((rebinned_time, rebinned_flux), axis = 1))
-     
+     rebinned_flux, rebinned_time, rebinned_flux_err = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
+     rebinned_data.append(np.stack((rebinned_time, rebinned_flux_err, junk), axis = 1))
+     rebinned_error.append(junk)
     #  j += 1
     #  if j == 10: break
 end = timeit()
 
 print(start-end)
 x = np.asarray(rebinned_data, dtype = object)
-
+y = np.asarray(rebinned_error, dtype = object
 """Saving the file"""
 
-np.save('/data/jpr64/rebinned_data.npy',x)
+np.save('/data/jpr64/rebinned_data_test.npy',x)
 
