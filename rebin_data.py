@@ -16,8 +16,8 @@ rebinned_data = []
 j = 0
 
 for i in flux_time_stack:
-     rebinned_flux, rebinned_time, rebinned_flux_err = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
-     rebinned_data.append(np.stack((rebinned_time, rebinned_flux_err, rebinned_flux_err), axis = 1))
+     rebinned_time, rebinned_flux, rebinned_flux_err = bin_tools.rebin_err_chunks(i[:,0], i[:,1], dt=(1/240), max_gap=0.5)
+     rebinned_data.append(np.stack((rebinned_time, rebinned_flux, rebinned_flux_err), axis = 1))
 
      j += 1
      if j == 10: break
