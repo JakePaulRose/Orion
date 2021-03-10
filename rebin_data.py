@@ -25,8 +25,7 @@ end = timeit()
 
 print(start-end)
 x = np.asarray(rebinned_data, dtype = object)
-y = np.asarray(rebinned_error, dtype = object
-"""Saving the file"""
 
+"""Saving the file"""
 np.save('/data/jpr64/rebinned_data_test.npy',x)
 
