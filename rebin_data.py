@@ -23,7 +23,7 @@ for i in flux_time_stack:
      if j == 10: break
 
 
-print(start-end)
+
 x = np.asarray(rebinned_data, dtype = object)
 
 """Saving the file"""
