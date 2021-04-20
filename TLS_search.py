@@ -31,7 +31,7 @@ for i, j in enumerate(lc):
 
 # Keeping objects within magnitude range      
 index_keep = np.where((mean_mag > min_mag) & (mean_mag< max_mag))
-index_keep[0]
+index_keep = index_keep[0]
 lc  = [lc[x] for x in index_keep]
 obj_ids = [obj_ids[x] for x in index_keep]
 
