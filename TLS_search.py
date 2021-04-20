@@ -13,8 +13,8 @@ import pandas as pd
 from OrionPY import Tools
 
 # Setting variables
-mag_min = 8.5 
-mag_max = 15
+min_mag = 8.5 
+max_mag = 15
 
 # Load in data and obj_ids
 hdu = Tools()
@@ -30,7 +30,7 @@ for i, j in enumerate(lc):
         mean_mag[i] = np.nanmean(magnitudes)
 
 # Keeping objects within magnitude range      
-index_keep = np.where((mean_mag > mag_min) & (mean_mag< mag_max))
+index_keep = np.where((mean_mag > min_mag) & (mean_mag< max_mag))
 index_keep[0]
 lc  = [lc[x] for x in index_keep]
 obj_ids = [obj_ids[x] for x in index_keep]
