@@ -39,7 +39,7 @@ obj_ids = [obj_ids[x] for x in index_keep]
 output = pd.DataFrame()
 
 for i, j in enumerate(lc):
-    if i == 10: break
+    # if i == 10: break
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
     flux /= np.nanmean(flux) # Normalising
     sigma_clipped = sigma_clip(flux, sigma_lower = float('inf'), sigma_upper= 4) # Sigma clipping values to get rid of flares
