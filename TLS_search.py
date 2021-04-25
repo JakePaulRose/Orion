@@ -29,7 +29,7 @@ rms_mag = np.zeros(np.size(lc))
 for i, j in enumerate(lc):
         magnitudes = -2.5 * np.log10(j[:,1]) + 20.2
         mean_mag[i] = np.nanmean(magnitudes)
-        rms_mag[i] = np.sqrt(np.mean(np.square(mean_mag[i] - np.nanmean(magnitudes))))
+        rms_mag[i] = np.sqrt(np.mean(np.square(magnitudes - mean_mag[i])))
 
 # Keeping objects with rms_mag low enough    
 index_keep = np.where(rms_mag < 10**(-2))
