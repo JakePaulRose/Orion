@@ -35,27 +35,27 @@ for i, j in enumerate(lc):
 index_keep = np.where(rms_mag < 10**(-2))
 index_keep = index_keep[0]
 print(np.size(index_keep))
-breakpoint
-lc  = [lc[x] for x in index_keep]
-obj_ids = [obj_ids[x] for x in index_keep]
 
-# Looping over the remaining objects. and outputting them to a pandas df
-output = pd.DataFrame()
+# lc  = [lc[x] for x in index_keep]
+# obj_ids = [obj_ids[x] for x in index_keep]
 
-for i, j in enumerate(lc):
-    # if i == 10: break
-    time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
-    flux /= np.nanmean(flux) # Normalising
-    sigma_clipped = sigma_clip(flux, sigma_lower = float('inf'), sigma_upper= 4) # Sigma clipping values to get rid of flares
+# # Looping over the remaining objects. and outputting them to a pandas df
+# output = pd.DataFrame()
+
+# for i, j in enumerate(lc):
+#     # if i == 10: break
+#     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
+#     flux /= np.nanmean(flux) # Normalising
+#     sigma_clipped = sigma_clip(flux, sigma_lower = float('inf'), sigma_upper= 4) # Sigma clipping values to get rid of flares
     
-    if np.size(time) < 100: continue # TLS fails if the array only has a few values in it. Anything less than 100 wouldn't be useful anyway.  
+#     if np.size(time) < 100: continue # TLS fails if the array only has a few values in it. Anything less than 100 wouldn't be useful anyway.  
    
-    # The actual TLS search
-    model = transitleastsquares(time, flux)
-    results = model.power(period_min = 1, period_max = 11, use_threads = 40)
+#     # The actual TLS search
+#     model = transitleastsquares(time, flux)
+#     results = model.power(period_min = 1, period_max = 11, use_threads = 40)
     
-    # Adding the object id's to allow follow up
-    results["obj_id"] = obj_ids[i]
-    output = output.append(results, ignore_index=True)
+#     # Adding the object id's to allow follow up
+#     results["obj_id"] = obj_ids[i]
+#     output = output.append(results, ignore_index=True)
    
-output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
+# output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
