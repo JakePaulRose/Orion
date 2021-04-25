@@ -24,6 +24,7 @@ obj_ids = [x for x in hdu.hdu[1].data['obj_id']]
 
 # Calculating magnitudes
 mean_mag = np.zeros(np.size(lc))
+rms_mag = np.zeros(np.size(lc))
 
 for i, j in enumerate(lc):
         magnitudes = -2.5 * np.log10(j[:,1]) + 20.2
