@@ -28,10 +28,13 @@ mean_mag = np.zeros(np.size(lc))
 for i, j in enumerate(lc):
         magnitudes = -2.5 * np.log10(j[:,1]) + 20.2
         mean_mag[i] = np.nanmean(magnitudes)
+        rms_mag[i] = np.sqrt(np.mean(np.square(mean_mag[i] - np.nanmean(magnitudes))))
 
-# Keeping objects within magnitude range      
-index_keep = np.where((mean_mag > min_mag) & (mean_mag< max_mag))
+# Keeping objects with rms_mag low enough    
+index_keep = np.where(rms_mag < 10**(-2))
 index_keep = index_keep[0]
+print(np.size(index_keep))
+breakpoint
 lc  = [lc[x] for x in index_keep]
 obj_ids = [obj_ids[x] for x in index_keep]
 
