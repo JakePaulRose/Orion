@@ -43,7 +43,7 @@ obj_ids = [obj_ids[x] for x in index_keep]
 # Looping over the remaining objects. and outputting them to a pandas df
 output = pd.DataFrame()
 
-for i, j in enumerate(lc)
+for i, j in enumerate(lc):
     if i%50 == 0:
         output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
