@@ -43,8 +43,7 @@ obj_ids = [obj_ids[x] for x in index_keep]
 # Looping over the remaining objects. and outputting them to a pandas df
 output = pd.DataFrame()
 
-for i, j in enumerate(lc):
-    if i < 1049: continue
+for i, j in enumerate(lc)
     if i%50 == 0:
         output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
@@ -55,7 +54,7 @@ for i, j in enumerate(lc):
    
     # The actual TLS search
     model = transitleastsquares(time, flux)
-    results = model.power(period_min = 1, period_max = 11, oversampling_factor = 2, use_threads = 40)
+    results = model.power(period_min = 1, period_max = 10, oversampling_factor = 2, use_threads = 40)
     
     # Adding the object id's to allow follow up
     results["obj_id"] = obj_ids[i]
