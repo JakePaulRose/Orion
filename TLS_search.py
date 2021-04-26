@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.core.shape_base import _stack_dispatcher
 from astropy.io import fits
 import time
 from astropy.stats import sigma_clip
@@ -43,6 +44,7 @@ obj_ids = [obj_ids[x] for x in index_keep]
 output = pd.DataFrame()
 
 for i, j in enumerate(lc):
+    if i < 1049: continue
     if i%50 == 0:
         output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
