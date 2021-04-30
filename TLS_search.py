@@ -55,7 +55,7 @@ for i, j in enumerate(lc):
    
     # The actual TLS search
     model = transitleastsquares(time, flux)
-    results = model.power(period_min = 1, period_max = 10, oversampling_factor = 2, use_threads = 40)
+    results = model.power(period_min = 1, period_max = 10, oversampling_factor = 2, use_threads = 8)
     
     # Adding the object id's to allow follow up
     results["obj_id"] = obj_ids[i]
