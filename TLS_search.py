@@ -44,6 +44,7 @@ obj_ids = [obj_ids[x] for x in index_keep]
 output = pd.DataFrame()
 
 for i, j in enumerate(lc):
+    if i < 800: continue
     if i%50 == 0:
         output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
@@ -61,4 +62,4 @@ for i, j in enumerate(lc):
     output = output.append(results, ignore_index=True)
 
    
-output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
+output.to_pickle('/data/jpr64/TLS_search_undetrended_2.pkl')
