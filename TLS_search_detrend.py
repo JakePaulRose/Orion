@@ -14,7 +14,7 @@ import pandas as pd
 from OrionPY import Tools
 
 # Setting variables
-min_mag = 8.5 
+min_mag = 9
 max_mag = 15
 
 # Load in data and obj_ids
@@ -33,7 +33,7 @@ for i, j in enumerate(lc):
         rms_mag[i] = np.sqrt(np.mean(np.square(magnitudes - mean_mag[i])))
 
 # Keeping objects with rms_mag low enough    
-index_keep = np.where(rms_mag < 10**(-2))
+index_keep = np.where((rms_mag > 10**(-2) & (mean_mag < max_mag) & (mean_mag > min_mag)))
 index_keep = index_keep[0]
 print(np.size(index_keep))
 
@@ -44,9 +44,8 @@ obj_ids = [obj_ids[x] for x in index_keep]
 output = pd.DataFrame()
 
 for i, j in enumerate(lc):
-    if i < 800: continue
     if i%50 == 0:
-        output.to_pickle('/data/jpr64/TLS_search_undetrended_2.pkl')
+        output.to_pickle('/data/jpr64/TLS_search_undetrended.pkl')
     time, flux = cleaned_array(j[:,0], j[:,1]) # Clean of neg and nan values
     flux /= np.nanmean(flux) # Normalising
     sigma_clipped = sigma_clip(flux, sigma_lower = float('inf'), sigma_upper= 4) # Sigma clipping values to get rid of flares
@@ -59,7 +58,7 @@ for i, j in enumerate(lc):
     
     # Adding the object id's to allow follow up
     results["obj_id"] = obj_ids[i]
-    output = output.append(results, ignore_index=True)
+    output = output.append(ignore_index=True) # Need to change this so it saves only the right columns
 
    
-output.to_pickle('/data/jpr64/TLS_search_undetrended_2.pkl')
+output.to_pickle('/data/jpr64/TLS_search_detrended.pkl')
